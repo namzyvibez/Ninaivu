@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Ninaivu · a place for things worth keeping</title>
+
+    <link rel="icon" type="image/png" href="ninaivu_icon.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <main id="desktop">
+        <header class="system">
+            <div class="system-name" title="a place for things worth keeping" id="ninaivu-system">NINAIVU</div>
+            <div class="system-time" id="clock">00:00</div>
+        </header>
+
+        <div class="desktop-area">
+            <div class="desktop-icon" data-app="starr" id="starr-icon">
+                <div class="desktop-icon-symbol">✩</div>
+                <div class="desktop-icon-name">Starr</div>
+            </div>
+
+            <div class="desktop-icon" data-app="study-timer" id="study-timer-icon">
+                <div class="desktop-icon-symbol">⌛︎</div>
+                <div class="desktop-icon-name">Study Timer</div>
+            </div>
+        </div>
+
+        <nav class="dock">
+            <!-- Ninaivu adds app icons here when their windows open. -->
+        </nav>
+
+        <div class="window" data-app="ninaivu" id="main-window">
+            <div class="window-bar">
+                <div class="window-controls">
+                    <button class="window-control close" aria-label="Close"></button>
+                    <button class="window-control minimize" aria-label="Minimize"></button>
+                    <button class="window-control maximize" aria-label="Maximize"></button>
+                </div>
+                <div class="window-title">NINAIVU</div>
+            </div>
+            <div class="window-content">
+                <p>hello from ninaivu</p>
+            </div>
+        </div>
+
+        <div class="window" data-app="starr" id="starr-window">
+            <div class="window-bar">
+                <div class="window-controls">
+                    <button class="window-control close" aria-label="Close"></button>
+                    <button class="window-control minimize" aria-label="Minimize"></button>
+                    <button class="window-control maximize" aria-label="Maximize"></button>
+                </div>
+                <div class="window-title">STARR</div>
+            </div>
+            <div class="window-content">
+                <p>hello from starr</p>
+            </div>
+        </div>
+
+        <div class="window study-timer-window" data-app="study-timer" id="study-timer-window">
+            <div class="window-bar">
+                <div class="window-controls">
+                    <button class="window-control close" aria-label="Close"></button>
+                    <button class="window-control minimize" aria-label="Minimize"></button>
+                    <button class="window-control maximize" aria-label="Maximize"></button>
+                </div>
+                <div class="window-title">NINAIVU / STUDY TIMER</div>
+            </div>
+            <div class="window-content timer-window-content">
+                <iframe src="apps/study-timer/index.html" title="Ninaivu physical study timer digital twin"></iframe>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

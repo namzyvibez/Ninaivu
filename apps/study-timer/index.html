@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ninaivu · Physical Study Timer</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="page">
+    <header class="app-heading">
+        <div>
+            <div class="eyebrow">NINAIVU / PERSONAL HARDWARE</div>
+            <h1>study companion <span>✦</span></h1>
+        </div>
+        <div class="build-status"><i></i> PHYSICAL BUILD · COMPLETED</div>
+    </header>
+
+    <section class="device" aria-label="Digital twin of the Ninaivu study timer">
+        <div class="device-branding">
+            <span>NV–01</span>
+            <span>STUDY COMPANION</span>
+            <span>REV. 01</span>
+        </div>
+
+        <div class="screen-bezel">
+            <div class="screen" id="device-screen">
+                <div class="screen-topline">
+                    <span class="screen-logo">NINAIVU <b>✦</b></span>
+                    <span class="screen-status" id="screen-status"><i></i> IDLE</span>
+                </div>
+
+                <section class="timer-view" id="timer-view">
+                    <div class="screen-caption" id="screen-caption">STUDY TIME</div>
+                    <div class="time-display" id="time-display">00:00:00</div>
+                    <div class="screen-bottomline">
+                        <span id="session-message">READY WHEN YOU ARE</span>
+                        <span>01 / NV</span>
+                    </div>
+                    <div class="progress-track"><div id="progress-fill"></div></div>
+                </section>
+
+                <section class="game-view" id="game-view" hidden>
+                    <div class="game-topline">
+                        <span>BREAK MODE / RUNNER</span>
+                        <span>SCORE <b id="game-score">00000</b></span>
+                    </div>
+                    <canvas id="game-canvas" width="320" height="105" aria-label="Tiny monochrome runner game"></canvas>
+                    <div class="game-message" id="game-message">PRESS START TO PLAY</div>
+                </section>
+            </div>
+        </div>
+
+        <div class="screen-glint"></div>
+
+        <div class="control-label"><span></span> THREE-BUTTON CONTROL <span></span></div>
+
+        <div class="physical-buttons">
+            <button class="hardware-button start" id="start-button" type="button" aria-label="Start or jump">
+                <span class="button-well"><span class="button-cap"><span class="button-symbol">▶</span></span></span>
+                <span class="button-name">START</span>
+            </button>
+            <button class="hardware-button stop" id="stop-button" type="button" aria-label="Stop or enter and exit game mode">
+                <span class="button-well"><span class="button-cap"><span class="button-symbol">■</span></span></span>
+                <span class="button-name">STOP</span>
+            </button>
+            <button class="hardware-button reset" id="reset-button" type="button" aria-label="Hold to reset timer">
+                <span class="button-well"><span class="button-cap"><span class="button-symbol">↺</span></span></span>
+                <span class="button-name">RESET</span>
+            </button>
+        </div>
+
+        <div class="device-engraving">
+            <span>MADE TO KEEP YOU FOCUSED</span>
+            <span class="engraving-star">✦</span>
+            <span>ASSEMBLED WITH CARE</span>
+        </div>
+    </section>
+
+    <div class="device-footnote">
+        <span class="status-led"></span>
+        <span id="interaction-hint">START to begin · STOP to pause · hold STOP 3s for game · hold RESET 2s to clear</span>
+    </div>
+
+    <footer class="page-footer">
+        <span>YOUR BUILD, IN DIGITAL FORM.</span>
+        <span>LOCAL BROWSER VERSION · NO HARDWARE CONNECTION</span>
+    </footer>
+</main>
+<script src="script.js"></script>
+</body>
+</html>
