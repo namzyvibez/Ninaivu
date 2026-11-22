@@ -179,7 +179,7 @@ function setupWindow(windowElement) {
 }
 windows.forEach(setupWindow);
 
-/*--- draggable windows ---*/
+/*--- draggable windows (with boundary constraints) ---*/
 function makeWindowDraggable(windowElement) {
     const windowBar = windowElement.querySelector(".window-bar");
     let isDragging = false;
@@ -190,10 +190,15 @@ function makeWindowDraggable(windowElement) {
         if (event.target.closest(".window-control")) return;
         if (windowElement.classList.contains("maximized")) return;
 
+        // Prevent default touch behaviors (like scrolling) while dragging
+        if (event.pointerType === "touch") {
+            event.preventDefault(); 
+        }
+
         const rect = windowElement.getBoundingClientRect();
         windowElement.style.left = `${rect.left}px`;
         windowElement.style.top = `${rect.top}px`;
-        windowElement.style.transform = "none";
+        windowElement.style.transform = "none"; // Remove the centering transform
 
         offsetX = event.clientX - rect.left;
         offsetY = event.clientY - rect.top;
@@ -204,8 +209,19 @@ function makeWindowDraggable(windowElement) {
 
     windowBar.addEventListener("pointermove", event => {
         if (!isDragging) return;
-        windowElement.style.left = `${event.clientX - offsetX}px`;
-        windowElement.style.top = `${event.clientY - offsetY}px`;
+
+        let newLeft = event.clientX - offsetX;
+        let newTop = event.clientY - offsetY;
+
+        // Boundary constraints: Keep the window inside the screen
+        const maxLeft = window.innerWidth - windowElement.offsetWidth;
+        const maxTop = window.innerHeight - windowElement.offsetHeight;
+
+        newLeft = Math.max(0, Math.min(newLeft, maxLeft));
+        newTop = Math.max(0, Math.min(newTop, maxTop));
+
+        windowElement.style.left = `${newLeft}px`;
+        windowElement.style.top = `${newTop}px`;
     });
 
     function stopDragging(event) {
@@ -214,6 +230,7 @@ function makeWindowDraggable(windowElement) {
             windowBar.releasePointerCapture(event.pointerId);
         }
     }
+    
     windowBar.addEventListener("pointerup", stopDragging);
     windowBar.addEventListener("pointercancel", stopDragging);
 }
@@ -244,6 +261,7 @@ desktopIcons.forEach(icon => {
 
     icon.addEventListener("pointerup", event => {
         event.stopPropagation();
+        event.preventDefault(); // Stops default browser behaviors
 
         // Touchscreen: one tap opens the app
         if (event.pointerType === "touch") {
