@@ -219,6 +219,8 @@ function makeWindowDraggable(windowElement) {
 }
 
 /*--- desktop icons ---*/
+
+/*--- 
 desktopIcons.forEach(icon => {
     const appName = icon.dataset.app;
 
@@ -234,11 +236,43 @@ desktopIcons.forEach(icon => {
     });
 });
 
+---*/
+
+/*--- desktop icons ---*/
+desktopIcons.forEach(icon => {
+    const appName = icon.dataset.app;
+
+    icon.addEventListener("pointerup", event => {
+        event.stopPropagation();
+
+        // Touchscreen: one tap opens the app
+        if (event.pointerType === "touch") {
+            openApp(appName);
+            return;
+        }
+
+        // Mouse or pen: select the icon
+        desktopIcons.forEach(other =>
+            other.classList.remove("selected")
+        );
+
+        icon.classList.add("selected");
+    });
+
+    // Mouse: double-click opens the app
+    icon.addEventListener("dblclick", event => {
+        event.preventDefault();
+        event.stopPropagation();
+        openApp(appName);
+    });
+});
+
 document.addEventListener("click", () => {
     desktopIcons.forEach(icon => icon.classList.remove("selected"));
 });
 
 /*--- dock items ---*/
+/*---
 function setupDockItem(dockItem) {
     const appName = dockItem.dataset.app;
 
@@ -250,6 +284,15 @@ function setupDockItem(dockItem) {
     dockItem.addEventListener("dblclick", event => {
         event.stopPropagation();
         openApp(appName);
+    });
+}
+---*/
+function setupDockItem(dockItem) {
+    const appName = dockItem.dataset.app;
+
+    dockItem.addEventListener("click", event => {
+        event.stopPropagation();
+        restoreApp(appName);
     });
 }
 

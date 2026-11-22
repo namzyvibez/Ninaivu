@@ -381,3 +381,53 @@ body {
 #study-timer-icon {
     top: 190px;
 }
+
+/* ================================
+   Tablet responsive layouttt
+================================ */
+
+@media (min-width: 768px) and (max-width: 1023px) {
+
+    .system {
+        top: 18px;
+        left: 20px;
+        right: 20px;
+    }
+
+    .dock {
+        width: 300px;
+        height: 60px;
+        bottom: 18px;
+    }
+
+    .window {
+        width: min(520px, 85vw);
+        max-height: 85vh;
+    }
+
+        /* Allow maximized windows to use the entire screen */
+    .window.maximized {
+        max-width: none;
+        max-height: none;
+    }
+
+    .study-timer-window {
+        /*
+        width: min(490px, 85vw);
+        height: min(610px, 85vh);
+        */
+        width: min(620px, 88vw);
+        height: min(760px, 88vh);
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+}
+
+@media (max-width: 767px) and (orientation: landscape) {
+    .study-timer-window {
+        width: calc(100vw - 20px);
+        height: 90vh;
+        top: 5%;
+    }
+}
