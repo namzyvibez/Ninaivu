@@ -209,6 +209,11 @@ function makeWindowDraggable(windowElement) {
 
     windowBar.addEventListener("pointermove", event => {
         if (!isDragging) return;
+        
+        // Tell the browser not to scroll while we are moving
+        if (event.pointerType === "touch") {
+            event.preventDefault();
+        }
 
         let newLeft = event.clientX - offsetX;
         let newTop = event.clientY - offsetY;

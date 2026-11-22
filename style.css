@@ -134,6 +134,14 @@ body {
     padding: 0 16px;
 
     border-bottom: 1px solid rgba(23, 23, 23, 0.1);
+
+    touch-action: none; /* Stops mobile scrolling while dragging */
+    cursor: grab;       /* Shows a grab hand on desktop */
+    user-select: none;
+}
+
+.window-bar:active {
+    cursor: grabbing;
 }
 
 .window-controls {
