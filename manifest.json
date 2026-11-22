@@ -1,0 +1,20 @@
+{
+  "name": "Ninaivu",
+  "short_name": "Ninaivu",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f2f0eb",
+  "theme_color": "#f2f0eb",
+  "icons": [
+    {
+      "src": "ninaivu_icon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "ninaivu_icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
